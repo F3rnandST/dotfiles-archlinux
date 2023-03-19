@@ -1,0 +1,96 @@
+# Alacritty Configuration
+
+##import:
+##  - ~/.config/alacritty/filehere.yml
+
+env:
+  TERM: xterm-256color
+  WINIT_X11_SCALE_FACTOR: '1.1'
+
+# Font Configuration
+font:
+  normal:
+    family: Source Code Pro
+    style: Nerd
+
+
+# Font size
+size: 13.0
+
+# Windows
+window:
+  dimensions:
+    columns: 100
+    lines: 25
+  padding:
+    x: 1
+    y: 1
+  dynamic_padding: true
+  decorations: none
+  startup_mode: Windowed
+  title: Alacritty
+
+# Scrolling
+scrolling:
+  # Maximum number of lines in the scrollback buffer.
+  # Specifying '0' will disable scrolling.
+  history: 100000
+
+  # Number of lines the viewport will move for every line scrolled when
+  # scrollback is enabled (history > 0).
+  multiplier: 3
+
+# Visual Bell
+bell:
+  animation: EaseOutExpo
+  color: '0xffffff'
+  duration: 0
+
+# Background opacity
+window.opacity: 0.70
+  
+offset:
+    x: 1
+    y: 1
+
+draw_bold_text_with_bright_colors: true
+
+mouse:
+  # Click settings
+  #
+  # The `double_click` and `triple_click` settings control the time
+  # alacritty should wait for accepting multiple clicks as one double
+  # or triple click.
+  double_click: { threshold: 300 }
+  triple_click: { threshold: 300 }
+  hide_when_typing: false
+
+
+# Selection colors
+colors:
+  # Default colors
+  primary:
+    background: '0x000000'
+    foreground: '0xb3cfa7'
+
+  # Normal colors
+  normal:
+    black:   '0x212529'
+    red:     '0xea5252'
+    green:   '0xacb765'
+    yellow:  '0xc1bf89'
+    blue:    '0x82abbc'
+    magenta: '0xb18a97'
+    cyan:    '0x88b482'
+    white:   '0xb3cfa7'
+
+  # Bright colors
+  bright:
+    black:   '0x31363b'
+    red:     '0xea5252'
+    green:   '0xacb765'
+    yellow:  '0xc1bf89'
+    blue:    '0x82abbc'
+    magenta: '0xb18a97'
+    cyan:    '0x89b482'
+    white:   '0xb3cfa7'

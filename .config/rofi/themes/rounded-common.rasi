@@ -1,0 +1,97 @@
+configuration {
+  display-run: " ";
+  display-drun: " ";
+  display-window: " ";
+  drun-display-format: "{icon} {name}";
+  font: "Source Code Pro 11";
+  modi: "window,run,drun";
+  show-icons: true;
+}
+
+
+* {
+    font:   		"Source Code Pro 11";
+    background-color:   transparent;
+    text-color:         #e3e3e3;
+    margin:     	0px;
+    padding:    	0px;
+    highlight: 		bold;
+    spacing:    	0px;
+    width: 		34%;
+    height: 		28%;
+}
+
+window {
+    border-radius:  	14px;
+    background-color:   #000000;
+    location:		center;
+    x-offset:		0;
+    y-offset:		300;
+}
+
+mainbox {
+    padding:    	12px;
+    children: 		[inputbar, listview];
+}
+
+inputbar {
+    background-color:   #000000;
+    border-color:       #ff0000;
+    border:        	2px;
+    border-radius:  	12px;
+    padding:   		8px 16px;
+    spacing:    	8px;
+    children:   	[ prompt, entry ];
+}
+
+prompt {
+    text-color: 	#e9e9e9;
+}
+
+entry {
+    placeholder:        "Search";
+    placeholder-color:  #ffffff;
+}
+
+message {
+    margin:             12px 0 0;
+    border-radius:      12px;
+    border-color:       @bg2;
+    background-color:   @bg2;
+}
+
+textbox {
+    padding:    	8px 24px;
+}
+
+listview {
+    background-color:   #000000;
+    margin:     	12px 0 0;
+    lines:      	8;
+    columns:    	2;
+    fixed-height: 	true;
+}
+
+element {
+    padding:        	8px 16px;
+    spacing:        	8px;
+    background-color: 	transparent;
+    border-radius:  	12px;
+}
+
+element normal active {
+    text-color: 	@bg3;
+}
+
+element selected normal, element selected active {
+    background-color:   #ff0000;
+}
+
+element-icon {
+    size:           	1em;
+    vertical-align: 	0.5;
+}
+
+element-text {
+    text-color: 	inherit;
+}

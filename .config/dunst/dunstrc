@@ -1,0 +1,94 @@
+[global]
+monitor = 0
+follow = mouse
+width = 350
+height = 120
+origin = bottom-right
+offset = 32x32
+scale = 0
+indicate_hidden = yes
+shrink = no
+separator_height = 4
+separator_color = auto
+padding = 10
+horizontal_padding = 10
+frame_width = 0
+sort = yes
+
+idle_threshold = 120
+font = Product Sans 12
+line_height = 2
+markup = full
+format = "<b>%a</b>\n%s\n%b"
+alignment = left
+show_age_threshold = 60
+word_wrap = yes
+ignore_newline = no
+stack_duplicates = yes
+
+hide_duplicate_count = no
+
+show_indicators = yes
+icon_position = left
+max_icon_size = 56
+
+# Rutas a los iconos predeterminados. 
+icon_path = ~/.scripts/icons
+
+sticky_history = yes
+history_length = 20
+
+# ruta del menú d. 
+dmenu = /usr/bin/dmenu -p dunst:
+
+browser = x-www-browser -new-tab
+always_run_script = true
+title = Dunst
+class = Dunst
+
+startup_notification = false
+
+
+[urgency_low]
+	timeout = 2
+    	background = "#0a0a09B3"
+    	foreground = "#fdfffd"
+	frame_color = "#8F7359"
+	highlight = "#7ba5dd"
+	#icon = &/usr/share
+
+[urgency_normal]
+	timeout = 5
+    	background = "#0a0a09B3"
+    	foreground = "#fdfffd"
+	frame_color = "#8F7359"
+	#script = ~/.config/dunst/scripts/playNotificationSound.sh
+
+[urgency_critical]
+timeout = 10
+    background = "#0a0a09B3"
+    foreground = "#fdfffd"
+frame_color = "#ff0000"
+
+[play_sound]
+    summary = "*"
+    script = ~/.config/dunst/alert.sh
+
+
+[backlight]
+	summary = "Backlight"
+	highlight = "#ffb29b"
+	set_stack_tag = "backlight"
+
+[volume]
+	summary = "Volume"
+	set_stack_tag = "volume"
+
+[volume-muted]
+	summary = "Volume Muted"
+	highlight = "#ee6a70"
+
+[volume-unmuted]
+	summary = "Volume Unmuted"
+	highlight = "#ee6a70"
+

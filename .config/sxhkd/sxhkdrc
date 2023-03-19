@@ -1,0 +1,189 @@
+# wm independent hotkeys
+
+# Terminal
+super + Return
+	alacritty
+
+# Floating Terminal
+super + k
+	kitty
+
+# Terminal Apps
+ctrl + alt + {c,r}
+	alacritty -e {cmus,ranger}
+
+# Rofi
+super + space
+	rofi -show drun
+
+#======================================================#
+#                     BSPWM HOTKEYS                    #
+#======================================================#
+							
+# PowerOff - Reboot - Logout - Lock - Lock & Suspend
+ctrl + shift + {p,r,x,l,b}
+	{systemctl poweroff,systemctl reboot,bspc quit,betterlockscreen --lock,betterlockscreen --lock & systemctl suspend}
+
+# Reload sxhkd config
+super + Escape
+	pkill -USR1 -x sxhkd; notify-send 'SXHKD' 'Restart Successfully.'
+					
+# Restart WM
+super + alt + r
+	bspc wm -r; notify-send 'BSPWM' 'Restart Successfully.'
+
+# Close or kill apps
+super + {_,shift + }x
+	bspc node -{c,k}
+							
+#=====================================================#
+#                     state/flags                     #
+#=====================================================#
+
+# Toggle between tiled & pseudo_tiled window
+super + t
+	bspc node -t "~"{tiled,pseudo_tiled}
+
+# Toggle between floating & fullscreen window
+super + f
+	bspc node -t "~"{floating,fullscreen}
+
+# Alternate between the tiled and monocle layout
+super + m
+	bspc desktop -l next
+
+#======================================================#
+#                 FOCUS OR SWAP WINDOWS                #
+#======================================================#
+
+# focus or send to the given desktop
+super + {_,shift + }{1-9,0}
+	bspc {desktop -f,node -d} '^{1-9,10}'
+
+# focus the next/previous window in the current desktop
+super + {_,shift}z
+        bspc node -f {next,prev}.local.!hidden.window
+
+# Switch to last opened workspace
+super + {grave,Tab}
+	bspc {node,desktop} -f last
+
+# Focus the node in the given direction
+ctrl + {_,shift + }{Left,Down,Up,Right}
+	bspc node -{f,s} {west,south,north,east}
+
+# Switch Workspaces
+ctrl + alt + {Left,Right}
+	bspc desktop -f {prev.local,next.local}
+
+# Swap the current node and the biggest window
+super + g
+	bspc node -s biggest.window
+
+#======================================================#
+#               SELECT NODS & DIRECTIONS               #
+#======================================================#
+
+# preselect the direction
+super + shift + {Left,Down,Up,Right}
+	bspc node -p {west,south,north,east}
+
+# preselect the ratio
+super + ctrl + {1-9}
+	bspc node -o 0.{1-9}
+
+# cancel the preselection for the focused node
+super + ctrl + space
+	bspc node -p cancel
+							
+#======================================================#
+#               MOVE AND RESIZE WINDOWS                #
+#======================================================#
+
+# EXPAND WINDOWS
+super + alt + {Left,Down,Up,Right}
+        bspc node -z {left -40 0,bottom 0 40,top 0 -40,right 40 0}
+
+# CONTRACT WINDOWS
+super + ctrl + {Left,Down,Up,Right}
+        bspc node -z {right -40 0,top 0 40,bottom 0 -40,left 40 0}
+
+# MOVE A FLOATING WINDOW
+super + {Left,Down,Up,Right}
+        bspc node -v {-40 0,0 40,0 -40,40 0}
+							
+#======================================================#
+#                    TECLAS ESPECIALES                 #
+#======================================================#
+
+##### Volume control
+
+XF86Audio{RaiseVolume,LowerVolume}
+	pamixer {--increase,--decrease} 10
+
+XF86AudioMute
+	{pamixer --toggle-mute | ~/.scripts/audioToggle.sh}
+
+##### Brightness Control
+
+XF86MonBrightness{Up,Down}
+	brightnessctl set {10%+,10%-}
+
+# Take Screenshot
+Print
+       ~/.scripts/screenshot.sh
+
+# Polybar Toggle
+super + p
+	polybar-msg {cmd hide | bspc config top_padding 0,\
+	cmd show | bspc config top_padding 38}	
+					
+#======================================================#
+#                    ACCESOS DIRECTOS                  #
+#======================================================#
+
+##### BROWSERS
+
+# Firefox - Librewolf - Google-Chrome - Chromium
+super + shift + {f,l,g,c}
+	{firefox ,librewolf ,google-chrome-stable ,chromium}
+
+##### FILE MANAGERS
+
+# Thunar - Nemo
+super + ctrl + {t,n}
+	{thunar ,nemo}
+
+##### OFFICE & DEVELOPMENT
+
+# Leafpad - Vscodium - OnlyOffice - Joplin - Sticky - Gparted
+super + ctrl + {l,v,o,j,s,g}
+	{leafpad ,vscodium ,desktopeditors ,joplin ,sticky ,gparted}
+
+##### MULTIMEDIA
+
+# Blueberry - Exaile - Pavucontrol - Mpv
+super + ctrl + {b,e,p,m}
+	{blueberry ,exaile ,pavucontrol ,Mpv}
+
+##### COMUNICATION
+
+# Telegram-desktop - Bluemail - zapzap
+super + alt + {t,b,z}
+	{telegram-desktop ,bluemail ,zapzap}
+
+# Librewolf Private-window
+super + alt  + l
+	{librewolf --private-window}
+
+# Chromium Private-window
+super + alt + c
+	chromium -incognito
+
+# Directory's
+super + alt + {x,m,b,d,g}
+	thunar /media/mixta/{.Themes,"My Music","Books & Docs",Descargas,Multimedia}
+
+# Open files config
+alt + {n,b,s,z,p,a,w,x}
+	~/.scripts/edit_configs {nvim, bspwm, sxhkd, zsh, polybar, autostart, windows,picom}
